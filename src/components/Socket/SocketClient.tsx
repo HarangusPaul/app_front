@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { io, Socket } from 'socket.io-client';
+import {Api} from "../../Config";
 
 interface SocketComponentProps {
     onMessage: (message: string) => void;
@@ -7,7 +8,7 @@ interface SocketComponentProps {
 
 const SocketComponent: React.FC<SocketComponentProps> = ({ onMessage }) => {
     useEffect(() => {
-        const socket: Socket = io('http://127.0.0.1:5000', {
+        const socket: Socket = io(Api, {
             transports: ['websocket', 'polling'], // Ensure 'websocket' is included
             reconnectionAttempts: 5, // Number of reconnection attempts
             timeout: 10000, // Connection timeout

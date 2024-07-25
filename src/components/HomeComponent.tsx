@@ -6,6 +6,7 @@ import axios from "axios";
 import {Subject} from "rxjs";
 import SocketComponent from "./Socket/SocketClient";
 import {messageSubject} from "../App";
+import {Api} from "../Config";
 
 export const msgSubject = new Subject<string>()
 export const HomeComponent = () => {
@@ -39,7 +40,7 @@ export const HomeComponent = () => {
 
 
     const send = () => {
-        return axios.post("http://127.0.0.1:5000/v1/msg",{command:input}).then((res) => {
+        return axios.post(Api+"/v1/msg",{command:input}).then((res) => {
             // setChat(res.data);  // Update chat with the response
         }).catch((error) => {
             console.error("There was an error!", error);
