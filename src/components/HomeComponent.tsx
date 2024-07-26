@@ -45,7 +45,7 @@ export const HomeComponent = () => {
                     }
                     list.push(value)
                     setMessageList(list)
-                    console.log(concatenateStrings(list))
+                    // console.log(concatenateStrings(list))
                     setChat(concatenateStrings(list))
 
                 }
@@ -56,7 +56,9 @@ export const HomeComponent = () => {
 
 
     const send = () => {
+        console.log(input)
         return axios.post(Api + "v1/msg", {command: input}).then((res) => {
+            setInput("")
             // setChat(res.data);  // Update chat with the response
         }).catch((error) => {
             console.error("There was an error!", error);
@@ -78,7 +80,7 @@ export const HomeComponent = () => {
                     <Icon name={"send"} className={'arrow'} size={"big"} onClick={() => {
                         setChat("")
                         setMessageList([])
-                        setInput("")
+                        // setInput("")
                     }}></Icon>
                 </div>
             </div>
