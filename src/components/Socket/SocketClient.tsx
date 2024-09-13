@@ -23,6 +23,7 @@ const SocketComponent: React.FC<SocketComponentProps> = ({ onMessage }) => {
         });
 
         socket.on('message', (message: string) => {
+            console.log(message)
             onMessage(message)
         });
 
